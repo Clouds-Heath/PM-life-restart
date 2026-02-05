@@ -32,13 +32,13 @@ globalThis.$$off = (tag, fn) => {
 class App {
     constructor() {
         this.#life.config({
-            defaultPropertyPoints: 25, // default number of points for a property
-            talentSelectLimit: 5, // max number of talents that can be selected
+            defaultPropertyPoints: 20, // default number of points for a property
+            talentSelectLimit: 4, // max number of talents that can be selected
             propertyAllocateLimit: [0, 20], // scoop of properties that can be allocated,
             defaultPropertys: { SPR: 5 }, // default properties
             talentConfig: {
                 // config for talent
-                talentPullCount: 20, // number of talents to pull from the talent pool
+                talentPullCount: 15, // number of talents to pull from the talent pool
                 talentRate: { 1: 100, 2: 10, 3: 1, total: 1000 }, // rate of talent pull
                 additions: {
                     TMS: [

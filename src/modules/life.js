@@ -63,8 +63,8 @@ class Life {
     }
 
     config({
-        defaultPropertyPoints = 25, // default number of points for a property
-        talentSelectLimit = 5, // max number of talents that can be selected
+        defaultPropertyPoints = 20, // default number of points for a property
+        talentSelectLimit = 4, // max number of talents that can be selected
         propertyAllocateLimit = [0, 20], // scoop of properties that can be allocated
         defaultPropertys = {}, // default propertys
         talentConfig, // config for talent

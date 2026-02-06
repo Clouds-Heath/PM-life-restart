@@ -10,7 +10,7 @@ class Property {
         INT: "INT", // 智力 intelligence INT
         STR: "STR", // 体质 strength STR
         MNY: "MNY", // 家境 money MNY
-        SPR: "SPR", // 快乐 spirit SPR
+        SPR: "SPR", // 精神力 spirit SPR
         LIF: "LIF", // 生命 life LIFE
         TLT: "TLT", // 天赋 talent TLT
         EVT: "EVT", // 事件 event EVT
@@ -27,8 +27,8 @@ class Property {
         HSTR: "HSTR", // 最高体质 High Strength
         LMNY: "LMNY", // 最低家境 Low Money
         HMNY: "HMNY", // 最高家境 High Money
-        LSPR: "LSPR", // 最低快乐 Low Spirit
-        HSPR: "HSPR", // 最高快乐 High Spirit
+        LSPR: "LSPR", // 最低精神力 Low Spirit
+        HSPR: "HSPR", // 最高精神力 High Spirit
 
         SUM: "SUM", // 总评 summary SUM
 

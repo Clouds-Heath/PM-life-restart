@@ -25,7 +25,7 @@ export default ({
     UI_Property_Intelligence: '智力',
     UI_Property_Strength: '体质',
     UI_Property_Money: '家境',
-    UI_Property_Spirit: '快乐',
+    UI_Property_Spirit: '精神力',
 
     UI_Title_Remake: '月计版人生重开模拟器',
     UI_Title_Subsequent: '这垃圾的都市人生一秒也不想待了',

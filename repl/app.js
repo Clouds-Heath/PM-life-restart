@@ -744,7 +744,7 @@ class App {
 智力(INT)         ${property.INT}
 体质(STR)         ${property.STR}
 家境(MNY)         ${property.MNY}
-快乐(SPR)         ${property.SPR}`
+精神力(SPR)         ${property.SPR}`
     }
 
     alloc(tag, value) {
@@ -857,7 +857,7 @@ class App {
             format('智力', this.#life.PropertyTypes.HINT),
             format('体质', this.#life.PropertyTypes.HSTR),
             format('家境', this.#life.PropertyTypes.HMNY),
-            format('快乐', this.#life.PropertyTypes.HSPR),
+            format('精神力', this.#life.PropertyTypes.HSPR),
             format('享年', this.#life.PropertyTypes.HAGE),
             format('总评', this.#life.PropertyTypes.SUM),
         ].join('\n')

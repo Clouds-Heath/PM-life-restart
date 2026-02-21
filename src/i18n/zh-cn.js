@@ -141,7 +141,7 @@ export default ({
     UI_Title_Celebrity: '你的前世是...',
     UI_CustomMode: '经典模式',
     UI_CustomModeDescription: '15连抽天赋\n自由分配属性',
-    UI_CelebrityMode: '名人模式',
+    UI_CelebrityMode: '名人模式（施工中）',
     UI_CelebrityModeDescription: '前世是古代名人\n重开到了现代',
     UI_AllNot: '↻都不是',
     UI_UniqueWaTaShi: '独一无二的我',

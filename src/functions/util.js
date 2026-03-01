@@ -113,4 +113,16 @@ function format(str, ...args) {
     return str.replace(/{(\d+)}/g, replace(args));
 }
 
-export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap, mapSet, deepMapSet, format };
+function findInView(view, name) {
+    if (!view) return null;
+    if (view.props && (view.props.var === name || view.props.name === name)) return view;
+    if (view.child) {
+        for (const child of view.child) {
+            const res = findInView(child, name);
+            if (res) return res;
+        }
+    }
+    return null;
+}
+
+export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap, mapSet, deepMapSet, format, findInView };

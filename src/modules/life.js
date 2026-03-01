@@ -38,6 +38,7 @@ class Life {
     #defaultPropertyPoints;
     #talentSelectLimit;
     #propertyAllocateLimit;
+    #talentReplacement = {};
     #defaultPropertys;
     #specialThanks;
     #initialData;
@@ -146,6 +147,7 @@ class Life {
 
     talentReplace(talents) {
         const result = this.#talent.replace(talents);
+        this.#talentReplacement = result;
         const contents = [];
         for(const id in result) {
             talents.push(result[id]);
@@ -316,6 +318,12 @@ class Life {
     get propertyAllocateLimit() { return util.clone(this.#propertyAllocateLimit); }
 
     get propertys() { return this.#property.getPropertys(); }
+    get talentReplacement() { return this.#talentReplacement; }
+    get talents() { return this.#property.get(this.PropertyTypes.TLT) || []; }
+
+    getTalent(id) {
+        return this.#talent.get(id);
+    }
     get times() { return this.#property.get(this.PropertyTypes.TMS) || 0; }
     set times(v) {
         this.#property.set(this.PropertyTypes.TMS, v);

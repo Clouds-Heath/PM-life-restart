@@ -3,6 +3,9 @@ const basePath = process.env.VITE_BASE_PATH || '/';
 
 export default {
   base: basePath,
+  server: {
+    open: true,
+  },
   build: {
     outDir: 'dist',
   },

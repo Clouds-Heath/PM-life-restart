@@ -4,12 +4,38 @@ export default class Summary extends ui.view.DefaultTheme.SummaryUI {
         this.listSummary.renderHandler = Laya.Handler.create(this, this.renderSummary, null, false);
         this.listSelectedTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);
         this.btnAgain.on(Laya.Event.CLICK, this, this.onAgain);
+
+        this.btnHome = Laya.View.createComp($_.findInView(ui.view.DefaultTheme.SummaryUI.uiView, 'btnAgain'));
+        this.btnHome.label = $lang.UI_Back_Home;
+        this.btnHome.name = 'btnHome'; // 给它命名，方便视图自动配置
+        this.btnAgain.parent.addChild(this.btnHome);
+        this.btnHome.on(Laya.Event.CLICK, this, this.onHome);
+
+        this.on(Laya.Event.RESIZE, this, this.onResize);
     }
 
     #selectedTalent;
     #enableExtend;
 
+    onResize() {
+        const space = 40;
+        const totalWidth = this.btnAgain.width + this.btnHome.width + space;
+        this.btnAgain.centerX = - (this.btnHome.width + space) / 2;
+        this.btnHome.centerX = (this.btnAgain.width + space) / 2;
+        this.btnAgain.bottom = this.btnHome.bottom = 100;
+    }
+
     onAgain() {
+        core.talentExtend(this.#selectedTalent);
+        core.times ++;
+        if ($ui.lastMode) {
+            $ui.switchView($ui.lastMode);
+        } else {
+            $ui.switchView(UI.pages.MAIN);
+        }
+    }
+
+    onHome() {
         core.talentExtend(this.#selectedTalent);
         core.times ++;
         $ui.switchView(UI.pages.MAIN);
@@ -46,6 +72,7 @@ export default class Summary extends ui.view.DefaultTheme.SummaryUI {
             this.#selectedTalent = lastExtendTalent;
         }
         this.listSelectedTalents.array = talents;
+        this.onResize();
     }
     renderSummary(box) {
         const {label, grade} = box.dataSource;

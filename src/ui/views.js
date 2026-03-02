@@ -571,6 +571,7 @@ const dark = {
             },
             [pages.TRAJECTORY]: {
                 vars: {
+                    btnTalents: 'btn_main',
                     btnSummary: 'btn_main',
                     boxTrajectory: {
                         defaultColor: '#393e46',
@@ -611,6 +612,7 @@ const dark = {
             },
             [pages.SUMMARY]: {
                 vars: {
+                    btnHome: 'btn_main',
                     btnAgain: 'btn_main',
                     title: 'title',
                 },
@@ -1120,6 +1122,7 @@ const light = {
             },
             [pages.TRAJECTORY]: {
                 vars: {
+                    btnTalents: 'btn_main',
                     btnSummary: 'btn_main',
                     boxTrajectory: {
                         defaultColor: '#ffffff',
@@ -1160,6 +1163,7 @@ const light = {
             },
             [pages.SUMMARY]: {
                 vars: {
+                    btnHome: 'btn_main',
                     btnAgain: 'btn_main',
                     title: 'title',
                 },

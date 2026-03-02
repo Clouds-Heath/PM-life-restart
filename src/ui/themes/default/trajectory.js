@@ -16,6 +16,20 @@ export default class Trajectory extends ui.view.DefaultTheme.TrajectoryUI {
         this.panelTrajectory.vScrollBar.elasticDistance = 150;
         this.scbSpeed.on(Laya.Event.CHANGE, this, () => this.speed = this.scbSpeed.value);
         this.scbSpeed.on(Laya.Event.MOUSE_UP, this, () => this.onNext());
+
+        this.btnTalents = Laya.View.createComp($_.findInView(ui.view.DefaultTheme.TrajectoryUI.uiView, 'btnSummary'));
+        this.btnTalents.label = $lang.UI_Talent_List;
+        this.btnTalents.width = 200;
+        this.btnTalents.height = 70;
+        this.btnTalents.top = 20;
+        this.btnTalents.right = 20;
+        this.btnTalents.centerX = NaN;
+        this.btnTalents.bottom = NaN;
+        const label = this.btnTalents.getChildByName('label');
+        if (label) label.fontSize = 35;
+        this.btnTalents.name = 'btnTalents'; // 给它命名，方便视图自动配置
+        this.addChild(this.btnTalents);
+        this.btnTalents.on(Laya.Event.CLICK, this, this.onShowTalents);
     }
 
     #speed;
@@ -48,6 +62,7 @@ export default class Trajectory extends ui.view.DefaultTheme.TrajectoryUI {
     #enableExtend;
 
     init({propertyAllocate, talents, enableExtend}) {
+        this.btnTalents.visible = true;
         this.#enableExtend = enableExtend;
         this.boxParticle.visible = false;
         this.boxSpeed.visible = true;
@@ -93,6 +108,7 @@ export default class Trajectory extends ui.view.DefaultTheme.TrajectoryUI {
             Laya.timer.frameOnce(1,this,()=>{
                 this.panelTrajectory.scrollTo(0, this.panelTrajectory.contentHeight);
             });
+            this.btnTalents.visible = false;
         }
         this.panelTrajectory.scrollTo(0, this.panelTrajectory.contentHeight);
         this.renderTrajectory(age, content);
@@ -125,6 +141,21 @@ export default class Trajectory extends ui.view.DefaultTheme.TrajectoryUI {
     onSummary() {
         const talents = this.#talents;
         $ui.switchView(UI.pages.SUMMARY, {talents, enableExtend: this.#enableExtend});
+    }
+
+    onShowTalents() {
+        const replaceMap = core.talentReplacement || {};
+        
+        const message = this.#talents.map(t => {
+            // 如果在核心替换记录里找到了这个天赋
+            if (replaceMap[t.id]) {
+                const newTalent = core.getTalent(replaceMap[t.id]);
+                return `【${t.name}】 -> 【${newTalent.name}】 ${newTalent.description}`;
+            }
+            // 没有被替换
+            return `【${t.name}】 ${t.description}`;
+        }).join('\n');
+        $$event('message', ['UI_Current_Talents', message]);
     }
 
     get speed() {

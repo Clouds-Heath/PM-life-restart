@@ -79,6 +79,10 @@ export default class UIManager {
     }
 
     async switchView(viewName, args, actions) {
+        if (viewName === UI.pages.TALENT || viewName === UI.pages.CELEBRITY) {
+            this.lastMode = viewName;
+        }
+
         const className = this.#pages[viewName]
         // get view instance
         const view = await this.getView(

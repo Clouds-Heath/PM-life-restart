@@ -47,6 +47,7 @@ export default ({
 
     UI_Manual: '手动',
     UI_Auto: '自动',
+    UI_Current_Talents: '当前天赋：\n{0}',
 
     UI_Goto_Summary: '人生总结',
     UI_Title_Summary: '人生总结',
